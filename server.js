@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 dotenv.config();
 ConnectDB();
+const Port=process.env.PORT || 4000;
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -23,6 +24,6 @@ app.use("/api/tasks", taskRoutes);
 
 app.use(notFound);
 app.use(handleError);
-app.listen(process.env.PORT, () => {
-  console.log(`Server started on port ${process.env.PORT}`);
+app.listen(Port, () => {
+  console.log(`Server started on port ${Port}`);
 });
